@@ -185,7 +185,15 @@ def videos(video):
     
     #işleyeceği videoyu alıyor
     capture=cv2.VideoCapture(0)
-    tracker = cv2.legacy.TrackerKCF_create()
+    opencvTrackers={"boosting":cv2.legacy.TrackerBoosting_create(),
+                "mil":cv2.legacy.TrackerMIL_create(),
+                "kcf":cv2.legacy.TrackerKCF_create(),
+                "tld":cv2.legacy.TrackerTLD_create(),
+                "medianflow":cv2.legacy.TrackerMedianFlow_create(),
+                "mosse":cv2.legacy.TrackerMOSSE_create(),
+                "csrt":cv2.legacy.TrackerCSRT_create()}
+    trackerName="kcf"
+    tracker = opencvTrackers[trackerName]
     track=False
     
     while True:
