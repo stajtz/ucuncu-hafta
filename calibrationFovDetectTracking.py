@@ -249,10 +249,8 @@ def videos(video):
                 
                  
                 if key == ord("a"):
-                    bbox.append(rect[0][0]-(rect[1][0]/2))
-                    bbox.append(rect[0][1]-(rect[1][1]/2))
-                    bbox.append(rect[1][0])
-                    bbox.append(rect[1][1])
+
+                    bbox=cv2.boundingRect(c)
                     drawBox(orginalFrame,bbox)
                     track=True
                     tracker.init(orginalFrame, bbox)
